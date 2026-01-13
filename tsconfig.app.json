@@ -35,5 +35,5 @@
       "@share/*" : ["src/share/*"],
     }
   },
-  "include": ["src"]
+  "include": ["src", ".storybook"]
 }
