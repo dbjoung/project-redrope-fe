@@ -1,1 +1,92 @@
 @import "tailwindcss";
+@tailwind utilities;
+
+@font-face {
+  font-family: "Pretendard Variable";
+  src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/packages/pretendard/dist/web/variable/woff2/PretendardVariable.woff2")
+    format("woff2");
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  /* breakpoint  */
+  --breakpoint-xs: 480px;
+
+  /* 폰트 */
+  --default-font-family: "Pretendard Variable", var(--font-sans);
+
+  /* 색상 */
+  /* title */
+  --color-rd-title-red: #f4435a;
+  --color-rd-title-orange: #f59b0f;
+  --color-rd-title-blue: #635dff;
+
+  /* surface-red */
+  --color-rd-surface-red-100: #ffe4e6;
+  --color-rd-surface-red-200: #ffb3b9;
+  --color-rd-surface-red-300: #ff7680;
+  --color-rd-surface-red-400: var(--color-rd-title-red);
+
+  /* surface-orange */
+  --color-rd-surface-orange-100: #fff2dd;
+  --color-rd-surface-orange-200: #ffd99e;
+  --color-rd-surface-orange-300: #f6b349;
+  --color-rd-surface-orange-400: var(--color-rd-title-orange);
+
+  /* surface-blue */
+  --color-rd-surface-blue-100: #e6e5ff;
+  --color-rd-surface-blue-200: #b8b5ff;
+  --color-rd-surface-blue-300: #807bff;
+  --color-rd-surface-blue-400: var(--color-rd-title-blue);
+
+  /* surface-gray */
+  --color-rd-surface-gray-100: #e4e4e4;
+  --color-rd-surface-gray-200: #c7c7c7;
+  --color-rd-surface-gray-300: #9d9d9d;
+  --color-rd-surface-gray-400: #676767;
+  --color-rd-surface-gray-500: #373737;
+  --color-rd-surface-gray-600: #1b1b1b;
+
+  /* misc */
+  --color-rd-white: #ffffff;
+  --color-rd-black: #000000;
+
+  /* spacing */
+  --spacing-rd-4: 4px;
+  --spacing-rd-8: 8px;
+  --spacing-rd-12: 12px;
+  --spacing-rd-16: 16px;
+  --spacing-rd-24: 24px;
+  --spacing-rd-32: 32px;
+  --spacing-rd-40: 40px;
+
+  /* radius */
+  --radius-rd-4: 4px;
+  --radius-rd-8: 8px;
+  --radius-rd-16: 16px;
+  --radius-rd-24: 24px;
+  --radius-rd-32: 32px;
+  --radius-rd-40: 40px;
+
+  /* text sizes */
+  --text-rd-fs-caption: 12px;
+  --text-rd-fs-normal: 14px;
+  --text-rd-fs-hard: 16px;
+  --text-rd-fs-title-sub: 20px;
+  --text-rd-fs-title-main: 24px;
+  --text-rd-fs-head: 32px;
+}
+
+@layer components {
+}
+
+@layer utilities {
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
