@@ -14,10 +14,10 @@
   /* breakpoint  */
   --breakpoint-xs: 480px;
 
-  /* 폰트 */
+  /* font */
   --default-font-family: "Pretendard Variable", var(--font-sans);
 
-  /* 색상 */
+  /* color */
   /* title */
   --color-rd-title-red: #f4435a;
   --color-rd-title-orange: #f59b0f;
