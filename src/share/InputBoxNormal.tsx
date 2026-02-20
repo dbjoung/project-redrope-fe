@@ -1,27 +1,23 @@
-import cn from "@share/util/cn.ts";
-import DynamicSelectedIcon from "@share/DynamicSelectedIcon.tsx";
+import { BoxLabel, type BoxLabelProps } from "@share/BoxLabel.tsx";
+import ContentsContainer from "@share/ContentsContainer.tsx";
 
-type InputBoxType = {
-  label: string;
+type InputBoxType = BoxLabelProps & {
   placeholder: string;
-  required: boolean;
 };
 
-export default function InputBoxNormal({ label, placeholder, required }: InputBoxType) {
+export default function InputBoxNormal({ text, htmlFor, placeholder, required }: InputBoxType) {
   return (
-    <section className={cn("gap-rd-4 flex flex-col")}>
-      <div className={cn("gap-rd-4 flex")}>
-        <label className="text-rd-fs-hard font-regular">{label}</label>
-        <DynamicSelectedIcon
-          name={"asterisk"}
-          customize={{ size: 12, color: "red", className: required ? "" : "hidden" }}
-        />
-      </div>
+    <ContentsContainer>
+      <BoxLabel text={text} htmlFor={htmlFor} required={required} />
+
       <input
-        className="p-rd-24 text-rd-fs-hard rounded-rd-8 border-rd-surface-gray-100 focus:border-rd-surface-red-200 border-2 focus:outline-none"
+        className="p-rd-16 text-rd-fs-hard rounded-rd-8 border-rd-surface-gray-100 focus:border-rd-surface-red-200 border-2 focus:outline-none"
+        typeof={"text"}
+        name={htmlFor}
+        id={htmlFor}
         placeholder={placeholder}
         required={required}
       />
-    </section>
+    </ContentsContainer>
   );
 }
