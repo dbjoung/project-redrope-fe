@@ -10,5 +10,9 @@ export default {
 };
 
 export const Default = {
-  args: {},
+  args: {
+    text: "label",
+    htmlFor: "#",
+    required: true,
+  },
 };
