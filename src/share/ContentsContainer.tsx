@@ -1,4 +1,4 @@
-import cn from "@share/util/cn.ts";
+import cn from "@share/lib/cn.ts";
 import type { ReactNode } from "react";
 
 export default function ContentsContainer({ children }: { children: ReactNode }) {

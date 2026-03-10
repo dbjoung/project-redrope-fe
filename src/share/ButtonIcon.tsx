@@ -1,7 +1,7 @@
 import DynamicSelectedIcon from "@share/DynamicSelectedIcon.tsx";
 import type { IconName } from "lucide-react/dynamic";
 import { cva, type VariantProps } from "class-variance-authority";
-import cn from "@share/util/cn.ts";
+import cn from "@share/lib/cn.ts";
 
 const ButtonIconVariants = cva(
   "rounded-rd-24 text-rd-surface-red-400 relative p-rd-12 overflow-clip flex w-fit justify-center items-center",

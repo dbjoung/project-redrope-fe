@@ -4,7 +4,7 @@ import { memo } from "react";
 import { DynamicIcon, type IconName } from "lucide-react/dynamic.mjs";
 import type { LucideProps } from "lucide-react";
 
-interface FixedIconProps {
+export interface FixedIconProps {
   name: IconName;
   customize?: Omit<LucideProps, "name">;
 }
