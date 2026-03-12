@@ -2,6 +2,7 @@ import DynamicSelectedIcon from "@share/DynamicSelectedIcon.tsx";
 import type { IconName } from "lucide-react/dynamic";
 import { cva, type VariantProps } from "class-variance-authority";
 import cn from "@share/lib/cn.ts";
+import type { ComponentProps } from "react";
 
 const ButtonSmallVariants = cva(
   "border-box text-rd-surface-red-400 relative overflow-clip flex w-fit justify-center items-center gap-rd-8 pl-rd-16 pr-rd-16 font-bold text-rd-fs-hard",
@@ -29,29 +30,29 @@ const ButtonSmallVariants = cva(
 
 interface ButtonSmallProps extends VariantProps<typeof ButtonSmallVariants> {
   iconName: IconName;
-  className?: string;
-  content?: string;
-  onClick: () => void;
+  buttonProps: ComponentProps<"button">;
 }
 
 export default function ButtonSmall({
   iconName,
-  className,
-  content = "",
   fill = true,
   stroke = true,
   rounded = true,
   padded = true,
-  onClick,
+  buttonProps,
 }: ButtonSmallProps) {
   return (
     <button
-      className={cn(ButtonSmallVariants({ fill, stroke, rounded, padded }), className, "group")}
-      onClick={onClick}
+      className={cn(
+        ButtonSmallVariants({ fill, stroke, rounded, padded }),
+        buttonProps.className,
+        "group",
+      )}
+      onClick={buttonProps.onClick}
     >
       <div className="bg-rd-black absolute top-0 right-0 h-full w-full opacity-0 group-hover:opacity-10"></div>
       <DynamicSelectedIcon name={iconName} customize={{ size: 18, className: "z-1" }} />
-      <p className={"z-1"}>{content}</p>
+      <p className={"z-1"}>{buttonProps.content}</p>
     </button>
   );
 }

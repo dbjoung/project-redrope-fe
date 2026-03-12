@@ -2,13 +2,14 @@ import DynamicSelectedIcon from "@share/DynamicSelectedIcon.tsx";
 import type { IconName } from "lucide-react/dynamic";
 import { cva, type VariantProps } from "class-variance-authority";
 import cn from "@share/lib/cn.ts";
+import type { ComponentProps } from "react";
 
-const ButtonType1Variants = cva(
-  "relative overflow-clip flex w-fit items-center gap-4 p-rd-16 font-medium text-rd-fs-title-main",
+const ButtonBigVariants = cva(
+  "relative overflow-clip flex w-fit items-center gap-rd-4 p-rd-16 font-medium text-rd-fs-title-main",
   {
     variants: {
       background: {
-        true: "bg-rd-title-red text-rd-white",
+        true: "rd-button-gradient text-rd-white",
         false: "bg-none",
       },
       direction: {
@@ -23,30 +24,32 @@ const ButtonType1Variants = cva(
   },
 );
 
-interface ButtonType1Props extends VariantProps<typeof ButtonType1Variants> {
-  iconName: IconName;
-  className?: string;
-  content?: string;
-  onClick: () => void;
+interface ButtonBigProps extends VariantProps<typeof ButtonBigVariants> {
+  iconName?: IconName;
+  buttonProps: ComponentProps<"button">;
 }
 
 export default function ButtonBig({
   iconName,
-  className,
-  content = "",
   background = true,
   rounded = true,
   direction = "center",
-  onClick,
-}: ButtonType1Props) {
+  buttonProps,
+}: ButtonBigProps) {
   return (
     <button
-      className={cn(ButtonType1Variants({ background, rounded, direction }), className, "group")}
-      onClick={onClick}
+      {...buttonProps}
+      className={cn(
+        ButtonBigVariants({ background, rounded, direction }),
+        buttonProps.className,
+        "group cursor-pointer",
+      )}
     >
       <div className="bg-rd-black absolute top-0 right-0 h-full w-full opacity-0 group-hover:opacity-20"></div>
-      <DynamicSelectedIcon name={iconName} customize={{ size: 24, className: "z-1" }} />
-      <p className={"z-1"}>{content}</p>
+      {iconName && (
+        <DynamicSelectedIcon name={iconName} customize={{ size: 24, className: "z-1" }} />
+      )}
+      <p className={"z-1 font-normal"}>{buttonProps.content}</p>
     </button>
   );
 }
