@@ -1,4 +1,4 @@
-import DynamicSelectedIcon from "@share/DynamicSelectedIcon.tsx";
+import DynamicSelectedIcon from "@share/ui/DynamicSelectedIcon.tsx";
 import type { IconName } from "lucide-react/dynamic";
 import { cva, type VariantProps } from "class-variance-authority";
 import cn from "@share/lib/cn.ts";

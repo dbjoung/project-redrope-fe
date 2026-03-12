@@ -1,5 +1,5 @@
 import cn from "@share/lib/cn.ts";
-import DynamicSelectedIcon, { type FixedIconProps } from "@share/DynamicSelectedIcon.tsx";
+import DynamicSelectedIcon, { type FixedIconProps } from "@share/ui/DynamicSelectedIcon.tsx";
 import type { ComponentProps, ReactNode } from "react";
 
 export type LabelBoxProps = {
