@@ -5,15 +5,15 @@ import cn from "@share/lib/cn.ts";
 import type { ComponentProps } from "react";
 
 const ButtonSmallVariants = cva(
-  "border-box text-rd-surface-red-400 relative overflow-clip flex w-fit justify-center items-center gap-rd-8 pl-rd-16 pr-rd-16 font-bold text-rd-fs-hard",
+  "border-box relative overflow-clip flex w-fit justify-center items-center gap-rd-8 pl-rd-16 pr-rd-16 font-bold text-rd-fs-hard cursor-pointer",
   {
     variants: {
       fill: {
-        true: "bg-rd-surface-red-100",
-        false: "bg-none",
+        true: "",
+        false: "bg-transparent",
       },
       stroke: {
-        true: "border-rd-surface-red-400 border",
+        true: "border",
         false: "border-none",
       },
       rounded: {
@@ -24,7 +24,33 @@ const ButtonSmallVariants = cva(
         true: "pt-rd-8 pb-rd-8",
         false: "pt-rd-4 pb-rd-4 flex-row-reverse",
       },
+      color: {
+        red: "text-rd-surface-red-300 hover:text-rd-surface-red-400",
+        gray: "text-rd-surface-gray-300 hover:text-rd-surface-red-400",
+      },
     },
+    compoundVariants: [
+      {
+        color: "red",
+        fill: true,
+        className: "bg-rd-surface-red-100",
+      },
+      {
+        color: "gray",
+        fill: true,
+        className: "bg-rd-surface-gray-100 hover:bg-rd-surface-red-100",
+      },
+      {
+        color: "red",
+        stroke: true,
+        className: "border-rd-surface-red-300",
+      },
+      {
+        color: "gray",
+        stroke: true,
+        className: "border-rd-surface-gray-300 hover:border-rd-surface-red-400",
+      },
+    ],
   },
 );
 
@@ -39,18 +65,17 @@ export default function ButtonSmall({
   stroke = true,
   rounded = true,
   padded = true,
+  color = "red",
   buttonProps,
 }: ButtonSmallProps) {
   return (
     <button
       className={cn(
-        ButtonSmallVariants({ fill, stroke, rounded, padded }),
+        ButtonSmallVariants({ fill, stroke, rounded, padded, color }),
         buttonProps.className,
-        "group",
       )}
       onClick={buttonProps.onClick}
     >
-      <div className="bg-rd-black absolute top-0 right-0 h-full w-full opacity-0 group-hover:opacity-10"></div>
       <DynamicSelectedIcon name={iconName} customize={{ size: 18, className: "z-1" }} />
       <p className={"z-1"}>{buttonProps.content}</p>
     </button>
