@@ -4,15 +4,15 @@ import { cva, type VariantProps } from "class-variance-authority";
 import cn from "@share/lib/cn.ts";
 
 const ButtonIconVariants = cva(
-  "rounded-rd-24 text-rd-surface-red-400 relative p-rd-12 overflow-clip flex w-fit justify-center items-center",
+  "rounded-rd-24 text-rd-surface-gray-300 relative p-rd-12 overflow-clip flex w-fit justify-center items-center cursor-pointer",
   {
     variants: {
       fill: {
-        true: "bg-rd-surface-red-100",
+        true: "bg-rd-surface-red-100 text-rd-surface-red-300",
         false: "bg-none",
       },
       stroke: {
-        true: "border-rd-surface-red-400 border",
+        true: "border-rd-surface-red-400 border text-rd-surface-red-400 hover:bg-rd-surface-red-100",
         false: "border-none",
       },
     },
@@ -36,13 +36,11 @@ export default function ButtonIcon({
     <button
       className={cn(
         ButtonIconVariants({ fill, stroke }),
-        !fill && !stroke && "text-rd-surface-gray-300",
         className,
-        "group",
+        "hover:text-rd-surface-red-400",
       )}
       onClick={onClick}
     >
-      <div className="bg-rd-black absolute top-0 right-0 h-full w-full opacity-0 group-hover:opacity-10"></div>
       <DynamicSelectedIcon name={iconName} customize={{ size: 24, className: "z-1" }} />
     </button>
   );
