@@ -1,4 +1,3 @@
-import { fn } from "storybook/test";
 import ButtonSmall from "@share/ui/ButtonSmall.tsx";
 
 export default {
@@ -6,7 +5,6 @@ export default {
   title: "ButtonSmall",
   tags: ["autodocs"],
   excludeStories: /.*Data$/,
-  args: { onClick: fn() },
 };
 
 export const Default = {
