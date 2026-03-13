@@ -61,10 +61,10 @@ interface ButtonSmallProps extends VariantProps<typeof ButtonSmallVariants> {
 
 export default function ButtonSmall({
   iconName,
-  fill = true,
-  stroke = true,
-  rounded = true,
-  padded = true,
+  fill = false,
+  stroke = false,
+  rounded = false,
+  padded = false,
   color = "red",
   buttonProps,
 }: ButtonSmallProps) {
