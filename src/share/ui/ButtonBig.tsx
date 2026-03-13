@@ -2,14 +2,15 @@ import DynamicSelectedIcon from "@share/ui/DynamicSelectedIcon.tsx";
 import type { IconName } from "lucide-react/dynamic";
 import { cva, type VariantProps } from "class-variance-authority";
 import cn from "@share/lib/cn.ts";
-import type { ComponentProps } from "react";
+import type { ComponentPropsWithRef, ElementType } from "react";
+import Polymorphic from "@share/ui/Polymorphic.tsx";
 
 const ButtonBigVariants = cva(
-  "relative overflow-clip flex w-fit items-center gap-rd-4 p-rd-16 font-medium text-rd-fs-title-main",
+  "text-rd-fs-title-sub p-rd-16 relative overflow-clip flex w-fit items-center gap-rd-12",
   {
     variants: {
       background: {
-        true: "rd-button-gradient text-rd-white",
+        true: "rd-button-gradient text-rd-white rd-button-shadow",
         false: "bg-none",
       },
       direction: {
@@ -20,28 +21,38 @@ const ButtonBigVariants = cva(
         true: "rounded-rd-16",
         false: "rounded-rd-8",
       },
+      size: {
+        small: "font-light",
+        large: "font-medium",
+      },
     },
   },
 );
 
-interface ButtonBigProps extends VariantProps<typeof ButtonBigVariants> {
+type ButtonBigProps<T extends ElementType = "button"> = {
+  as?: T;
   iconName?: IconName;
-  buttonProps: ComponentProps<"button">;
-}
+  text: string;
+  elementProps: ComponentPropsWithRef<T>;
+} & VariantProps<typeof ButtonBigVariants>;
 
-export default function ButtonBig({
+export default function ButtonBig<T extends ElementType = "button">({
+  as = "button",
   iconName,
-  background = true,
-  rounded = true,
+  text,
+  background = false,
+  rounded = false,
   direction = "center",
-  buttonProps,
-}: ButtonBigProps) {
+  size = "large",
+  elementProps,
+}: ButtonBigProps<T>) {
   return (
-    <button
-      {...buttonProps}
+    <Polymorphic
+      as={as}
+      {...elementProps}
       className={cn(
-        ButtonBigVariants({ background, rounded, direction }),
-        buttonProps.className,
+        ButtonBigVariants({ background, rounded, direction, size }),
+        elementProps?.className,
         "group cursor-pointer",
       )}
     >
@@ -49,7 +60,7 @@ export default function ButtonBig({
       {iconName && (
         <DynamicSelectedIcon name={iconName} customize={{ size: 24, className: "z-1" }} />
       )}
-      <p className={"z-1 font-normal"}>{buttonProps.content}</p>
-    </button>
+      <p className={"z-1"}>{text}</p>
+    </Polymorphic>
   );
 }
