@@ -1,4 +1,4 @@
-import HelperLink from "./HelperLink";
+import HelperLink from "./HelperLink.tsx";
 
 export default {
   component: HelperLink,

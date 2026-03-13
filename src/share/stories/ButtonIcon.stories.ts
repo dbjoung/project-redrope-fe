@@ -1,5 +1,5 @@
 import { fn } from "storybook/test";
-import ButtonIcon from "@share/ButtonIcon.tsx";
+import ButtonIcon from "@share/ui/ButtonIcon.tsx";
 
 export default {
   component: ButtonIcon,

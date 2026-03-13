@@ -1,8 +1,8 @@
-import { BoxLabel } from "@share/BoxLabel.tsx";
+import { LabelBox } from "@share/ui/LabelBox.tsx";
 
 export default {
-  component: BoxLabel,
-  title: "BoxLabel",
+  component: LabelBox,
+  title: "LabelBox",
   tags: ["autodocs"],
   excludeStories: /.*Data$/,
 };

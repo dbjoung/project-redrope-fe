@@ -1,5 +1,5 @@
 import { fn } from "storybook/test";
-import ButtonSmall from "@share/ButtonSmall.tsx";
+import ButtonSmall from "@share/ui/ButtonSmall.tsx";
 
 export default {
   component: ButtonSmall,
@@ -12,10 +12,6 @@ export default {
 export const Default = {
   args: {
     iconName: "camera",
-    content: "로그인",
-    fill: true,
-    stroke: true,
-    rounded: true,
-    padded: true,
+    buttonProps: { type: "submit", content: "로그인", className: "w-full" },
   },
 };

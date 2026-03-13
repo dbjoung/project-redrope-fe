@@ -1,14 +1,14 @@
 import cn from "@share/lib/cn.ts";
-import DynamicSelectedIcon, { type FixedIconProps } from "@share/DynamicSelectedIcon.tsx";
-import type { ReactNode } from "react";
+import DynamicSelectedIcon, { type FixedIconProps } from "@share/ui/DynamicSelectedIcon.tsx";
+import type { ComponentProps, ReactNode } from "react";
 
-export type BoxLabelProps = {
+export type LabelBoxProps = {
   textVariant?: "regular" | "medium" | "bold";
   text: string;
-  htmlFor: string;
   required?: boolean;
   iconInfo?: FixedIconProps;
   children?: ReactNode;
+  labelProps: ComponentProps<"label">;
 };
 
 const textVariants = {
@@ -17,20 +17,20 @@ const textVariants = {
   bold: "text-rd-fs-title-sub font-bold",
 };
 
-export function BoxLabel({
+export function LabelBox({
   textVariant = "regular",
   text,
-  htmlFor,
   required = false,
   iconInfo,
   children,
-}: BoxLabelProps) {
+  labelProps,
+}: LabelBoxProps) {
   return (
-    <div className={cn("flex items-center justify-between")}>
+    <div className={cn("flex w-full items-center justify-between")}>
       <div className="gap-rd-8 flex items-center">
         {iconInfo && <DynamicSelectedIcon {...iconInfo} />}
         <div className="flex">
-          <label className={cn("font-regular", textVariants[textVariant])} htmlFor={htmlFor}>
+          <label {...labelProps} className={cn("font-regular", textVariants[textVariant])}>
             {text}
           </label>
           <DynamicSelectedIcon

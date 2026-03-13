@@ -1,4 +1,4 @@
-import ButtonBig from "@share/ButtonBig.tsx";
+import ButtonBig from "@share/ui/ButtonBig.tsx";
 import { fn } from "storybook/test";
 
 export default {
@@ -12,10 +12,9 @@ export default {
 export const Default = {
   args: {
     iconName: "camera",
-    content: "로그인",
     background: true,
     rounded: true,
-    className: "w-full",
     direction: "left",
+    buttonProps: { type: "submit", content: "로그인", className: "w-full" },
   },
 };
