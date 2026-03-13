@@ -1,9 +1,9 @@
-import { LabelBox } from "@share/LabelBox.tsx";
-import FlexColContainer from "@share/FlexColContainer.tsx";
-import InputBox from "@share/InputBox.tsx";
-import ButtonBig from "@share/ButtonBig.tsx";
+import { LabelBox } from "@share/ui/LabelBox.tsx";
+import FlexColContainer from "@share/ui/FlexColContainer.tsx";
+import InputBox from "@share/ui/InputBox.tsx";
+import ButtonBig from "@share/ui/ButtonBig.tsx";
 import { useActionState, useRef } from "react";
-import HelperLink from "@share/HelperLink.tsx";
+import HelperLink from "@share/ui/HelperLink.tsx";
 
 type LoginFormData = {
   id: string;
