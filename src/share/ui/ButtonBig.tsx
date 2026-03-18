@@ -37,7 +37,7 @@ type ButtonBigProps<T extends ElementType = "button"> = {
 } & VariantProps<typeof ButtonBigVariants>;
 
 export default function ButtonBig<T extends ElementType = "button">({
-  as = "button",
+  as,
   iconName,
   text,
   background = false,

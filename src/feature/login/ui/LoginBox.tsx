@@ -57,7 +57,12 @@ export default function LoginBox() {
             className={"w-full"}
           />
         </div>
-        <ButtonBig buttonProps={{ type: "submit", content: "로그인", className: "w-full" }} />
+        <ButtonBig
+          text={"로그인"}
+          background
+          rounded
+          elementProps={{ type: "submit", className: "w-full" }}
+        />
       </form>
       <div className="gap-rd-8 flex flex-col">
         <HelperLink label={"계정이 없으신가요?"} linkLabel={"회원가입"} href={"/#"} />
