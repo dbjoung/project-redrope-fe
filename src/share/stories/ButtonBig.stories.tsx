@@ -1,4 +1,5 @@
 import ButtonBig from "@share/ui/ButtonBig.tsx";
+import { NavLink } from "react-router";
 import { fn } from "storybook/test";
 
 export default {
@@ -25,7 +26,7 @@ export const Default = {
 
 export const LinkButton = {
   args: {
-    as: "NavLink",
+    as: NavLink,
     iconName: "camera",
     text: "로그인",
     background: true,
@@ -33,7 +34,7 @@ export const LinkButton = {
     direction: "left",
     size: "large",
     elementProps: {
-      onClick: fn(),
+      to: "/#",
     },
   },
 };
