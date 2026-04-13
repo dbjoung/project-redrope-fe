@@ -28,8 +28,8 @@ interface ButtonIconProps extends VariantProps<typeof ButtonIconVariants> {
 export default function ButtonIcon({
   iconName,
   className,
-  fill = true,
-  stroke = true,
+  fill = false,
+  stroke = false,
   onClick,
 }: ButtonIconProps) {
   return (
