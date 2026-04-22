@@ -52,6 +52,7 @@
   /* misc */
   --color-rd-white: #ffffff;
   --color-rd-black: #000000;
+  --color-rd-rgb-black: 0, 0, 0;
 
   /* spacing */
   --spacing-rd-4: 0.25rem; /* 4px */
@@ -84,6 +85,11 @@
   .rd-box-shadow {
     box-shadow: 0 4px 8px 1px var(--color-rd-surface-gray-100);
   }
+  .rd-button-shadow {
+    box-shadow:
+      0 1px 2px 0 rgba(var(--color-rd-rgb-black), 0.3),
+      0 1px 3px 1px rgba(var(--color-rd-rgb-black), 0.15);
+  }
   .rd-button-gradient {
     background: linear-gradient(
       90deg,
@@ -98,6 +104,13 @@
       var(--color-rd-white) 50%,
       var(--color-rd-surface-orange-100) 100%
     );
+  }
+
+  .rd-border-t {
+    @apply border-rd-surface-gray-100 border-t-1;
+  }
+  .rd-border-r {
+    @apply border-rd-surface-gray-100 border-r-1;
   }
 }
 
