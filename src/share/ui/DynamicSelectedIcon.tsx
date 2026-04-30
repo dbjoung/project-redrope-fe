@@ -14,4 +14,5 @@ const DynamicSelectedIcon = memo(function FixedIcon({ name, customize }: FixedIc
 });
 
 DynamicSelectedIcon.displayName = "DynamicSelectedIcon";
+
 export default DynamicSelectedIcon;

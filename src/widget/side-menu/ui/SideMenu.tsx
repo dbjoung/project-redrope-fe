@@ -7,7 +7,7 @@ import { NavLink } from "react-router";
 
 export default function SideMenu() {
   return (
-    <section className="rd-border-r flex h-full w-[270px] flex-col justify-between">
+    <section className="flex- rd-border-r bg-rd-white flex h-full w-[270px] flex-col justify-between">
       <section className="w-full">
         <section id="header-section" className="top-section p-rd-16 gap-rd-12 flex flex-col">
           <div className="flex items-center justify-between">
