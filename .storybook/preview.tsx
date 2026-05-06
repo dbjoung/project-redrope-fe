@@ -6,7 +6,7 @@ const preview: Preview = {
   decorators: [
     (Story) => (
       <MemoryRouter>
-        <div className="flex h-[900px] w-full items-center justify-center p-4">
+        <div className="flex h-[900px] w-full items-center justify-center p-2">
           <Story />
         </div>
       </MemoryRouter>
