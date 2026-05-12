@@ -10,8 +10,8 @@ type WorldCardProps = {
 
 export default function WorldCard({ title, imageUrl, writer, description }: WorldCardProps) {
   return (
-    <NavLink to={"/#"} className="relative">
-      <section className="rd-box-shadow rounded-rd-16 flex w-[300px] flex-col overflow-hidden border-white">
+    <NavLink to={"/#"} className="block w-full max-w-[300px]">
+      <section className="rd-box-shadow rounded-rd-16 bg-rd-white relative flex w-full flex-col overflow-hidden border-white">
         <section className="h-[170px]">
           <img src={imageUrl} alt={title} className="h-full w-full object-cover" />
         </section>
@@ -22,12 +22,12 @@ export default function WorldCard({ title, imageUrl, writer, description }: Worl
           </div>
           <p className="text-rd-fs-normal line-clamp-3 font-normal">{description}</p>
         </section>
+        <ButtonIcon
+          iconName={"trash"}
+          onClick={() => null}
+          className={"top-rd-8 right-rd-8 absolute"}
+        />
       </section>
-      <ButtonIcon
-        iconName={"trash"}
-        onClick={() => null}
-        className={"top-rd-8 right-rd-8 absolute"}
-      />
     </NavLink>
   );
 }
