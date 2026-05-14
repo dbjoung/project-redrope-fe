@@ -79,6 +79,9 @@
   --text-rd-fs-title-main: 1.5rem; /* 24px */
   --text-rd-fs-head: 2rem; /* 32px */
   --text-rd-fs-logo: 3rem; /* 48px */
+
+  /*기타*/
+  --width-rd-sidebar: 16.875rem;
 }
 
 @layer components {
@@ -107,14 +110,22 @@
   }
 
   .rd-border-t {
-    @apply border-rd-surface-gray-100 border-t-1;
+    @apply border-rd-surface-gray-100 border-t;
   }
   .rd-border-r {
-    @apply border-rd-surface-gray-100 border-r-1;
+    @apply border-rd-surface-gray-100 border-r;
   }
-}
 
-@layer utilities {
+  .sidebarAnimation {
+    @apply transition-all duration-600;
+  }
+
+  .sidebarClosed {
+    transform: translateX(calc(var(--width-rd-sidebar) * -1));
+  }
+  .topbarClosed {
+    transform: translateX(calc(4rem + var(--width-rd-sidebar) * -1));
+  }
 }
 
 html,
