@@ -1,14 +1,18 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
-import LoginPage from "@page/auth/LoginPage.tsx";
 import AuthLayout from "@/app/layouts/AuthLayout.tsx";
 import LootLayout from "@/app/layouts/LootLayout.tsx";
-import SidebarLayout from "@/app/layouts/SidebarLayout.tsx";
-import WorldPage from "@page/world-list/ui/WorldPage.tsx";
+import OutWorldLayout from "@/app/layouts/OutWorldLayout";
+import { RouteErrorBoundary } from "@/share/lib/RouteErrorBoundary";
+import WorldList from "@/page/out-world/ui/WorldList";
+import Login from "@/page/auth/Login";
+import InWorld from "@/page/in-world/ui/InWorld";
+import InWorldLayout from "./layouts/InWorldLayout";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <LootLayout />,
+    errorElement: <RouteErrorBoundary />,
     children: [
       {
         path: "/",
@@ -16,17 +20,27 @@ const router = createBrowserRouter([
         children: [
           {
             path: "/login",
-            element: <LoginPage />,
+            element: <Login />,
           },
         ],
       },
       {
         path: "/",
-        element: <SidebarLayout />,
+        element: <OutWorldLayout />,
         children: [
           {
             path: "/worlds",
-            element: <WorldPage />,
+            element: <WorldList />,
+          },
+        ],
+      },
+      {
+        path: "/worlds/:worldId",
+        element: <InWorldLayout />,
+        children: [
+          {
+            path: "/worlds/:worldId",
+            element: <InWorld />,
           },
         ],
       },
