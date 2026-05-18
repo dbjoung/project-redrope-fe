@@ -45,6 +45,7 @@ export default function InWorldLayout() {
   if (isPending || !worldInfo) {
     return <p className="text-rd-fs-normal text-rd-surface-gray-400">불러오는 중...</p>;
   }
+
   return (
     <section className="rd-background-gradient flex h-screen w-screen">
       <TopbarLayout isInWorld={!!worldId} sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
@@ -67,7 +68,7 @@ export default function InWorldLayout() {
                   text={category.name}
                   size="small"
                   direction="left"
-                  elementProps={{ className: "w-full", to: "/#" }}
+                  elementProps={{ className: "w-full", to: `/worlds/${worldId}/${category.id}` }}
                 />
               </li>
             ))}
@@ -83,7 +84,7 @@ export default function InWorldLayout() {
                   text={item.text}
                   size="small"
                   direction="left"
-                  elementProps={{ className: "w-full", to: "/#" }}
+                  elementProps={{ className: "w-full", to: "/" }}
                 />
               </li>
             ))}

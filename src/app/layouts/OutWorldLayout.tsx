@@ -14,9 +14,9 @@ type WorldMenuType = {
 };
 
 const OUT_WORLD_MENU: WorldMenuType[] = [
-  { iconName: "earth", text: "내 세계", to: "/#" },
-  { iconName: "handshake", text: "초대 세계", to: "/#" },
-  { iconName: "sparkle", text: "내 설정", to: "/#" },
+  { iconName: "earth", text: "내 세계", to: "/worlds" },
+  { iconName: "handshake", text: "초대 세계", to: "/invited" },
+  { iconName: "sparkle", text: "내 설정", to: "/setting" },
 ];
 
 export default function OutWorldLayout() {
@@ -43,7 +43,7 @@ export default function OutWorldLayout() {
                   text={item.text}
                   size="small"
                   direction="left"
-                  elementProps={{ className: "w-full", to: "/#" }}
+                  elementProps={{ className: "w-full", to: item.to }}
                 />
               </li>
             ))}
