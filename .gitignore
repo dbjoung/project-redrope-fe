@@ -25,3 +25,9 @@ dist-ssr
 
 *storybook.log
 storybook-static
+.eslintcache
+
+# 환경 설정
+.env
+.env.local
+.env.*.local

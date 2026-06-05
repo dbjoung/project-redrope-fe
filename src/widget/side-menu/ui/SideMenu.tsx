@@ -1,38 +1,39 @@
-import ButtonIcon from "@share/ui/ButtonIcon.tsx";
 import ButtonBig from "@share/ui/ButtonBig.tsx";
-import MainMenuList from "@feature/menu/ui/MainMenuList.tsx";
-import OptionMenuList from "@feature/menu/ui/OptionMenuList.tsx";
-import ButtonSmall from "@share/ui/ButtonSmall.tsx";
-import { NavLink } from "react-router";
 
-export default function SideMenu() {
+import { NavLink } from "react-router";
+import cn from "@/share/lib/cn";
+import { useEffect, type ReactElement } from "react";
+
+export default function SideMenu({
+  topSection,
+  firstSectionGroup,
+  secondSectionGroup,
+  className,
+}: {
+  topSection: ReactElement;
+  firstSectionGroup: ReactElement;
+  secondSectionGroup?: ReactElement;
+  className?: string;
+}) {
+  useEffect(() => {});
+
   return (
-    <section className="flex- rd-border-r bg-rd-white flex h-full w-[270px] flex-col justify-between">
-      <section className="w-full">
-        <section id="header-section" className="top-section p-rd-16 gap-rd-12 flex flex-col">
-          <div className="flex items-center justify-between">
-            <ButtonSmall
-              iconName={"earth"}
-              padded
-              rounded
-              color={"gray"}
-              buttonProps={{ content: "돌아가기" }}
-            />
-            <ButtonIcon iconName="columns-2" stroke={false} fill={false} onClick={() => {}} />
-          </div>
-          <p className="text-rd-fs-title-main font-bold">홍연의 서</p>
+    <section className={cn("rd-border-r flex h-full flex-col justify-between", className)}>
+      <section className="w-full pt-12">
+        <section id="header-section" className={cn("top-section p-rd-16 gap-rd-12 flex flex-col")}>
+          {topSection}
         </section>
         <section id="menu-up-section" className={"p-rd-16 rd-border-t flex flex-col"}>
-          <MainMenuList />
+          {firstSectionGroup}
         </section>
         <section id="menu-down-section" className={"p-rd-16 rd-border-t flex flex-col"}>
-          <OptionMenuList />
+          {secondSectionGroup}
         </section>
       </section>
       <section id="footer-section" className={"p-rd-16 rd-border-t flex flex-col"}>
         <ButtonBig
           as={NavLink}
-          iconName={"earth"}
+          iconName={"arrow-big-left-dash"}
           text={"로그아웃"}
           size="small"
           direction="left"

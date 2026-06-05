@@ -1,17 +1,28 @@
 import { NavLink } from "react-router";
 import ButtonIcon from "@share/ui/ButtonIcon.tsx";
 
-type WorldCardProps = {
+type EntityCardProps = {
   id: number;
+  worldId: number;
+  categoryId: number;
+  entityId: number;
   title: string;
   imageUrl: string;
   writer: string;
   description: string;
 };
 
-export default function WorldCard({ id, title, imageUrl, writer, description }: WorldCardProps) {
+export default function EntityCard({
+  worldId,
+  categoryId,
+  entityId,
+  title,
+  imageUrl,
+  writer,
+  description,
+}: EntityCardProps) {
   return (
-    <NavLink to={`/worlds/${id}`} className="block w-full">
+    <NavLink to={`/worlds/${worldId}/${categoryId}/${entityId}`} className="block w-full">
       <section className="rd-box-shadow rounded-rd-16 bg-rd-white relative flex w-full flex-col overflow-hidden border-white">
         <section className="h-42.5">
           <img src={imageUrl} alt={title} className="h-full w-full object-cover" />

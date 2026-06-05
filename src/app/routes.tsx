@@ -7,6 +7,7 @@ import WorldList from "@/page/out-world/ui/WorldList";
 import Login from "@/page/auth/Login";
 import InWorld from "@/page/in-world/ui/InWorld";
 import InWorldLayout from "./layouts/InWorldLayout";
+import EntityDetail from "@/page/in-world/ui/EntityDetail";
 
 const router = createBrowserRouter([
   {
@@ -39,8 +40,12 @@ const router = createBrowserRouter([
         element: <InWorldLayout />,
         children: [
           {
-            path: "/worlds/:worldId",
+            path: "/worlds/:worldId/:categoryId",
             element: <InWorld />,
+          },
+          {
+            path: "/worlds/:worldId/:categoryId/:entityId",
+            element: <EntityDetail />,
           },
         ],
       },

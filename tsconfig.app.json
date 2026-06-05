@@ -25,14 +25,13 @@
     "noUncheckedSideEffectImports": true,
 
     /* 경로 설정 */
-    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@page/*" : ["src/page/*"],
-      "@widget/*" : ["src/widget/*"],
-      "@feature/*" : ["src/feature/*"],
-      "@entity/*" : ["src/entity/*"],
-      "@share/*" : ["src/share/*"],
+      "@/*": ["./src/*"],
+      "@page/*": ["./src/page/*"],
+      "@widget/*": ["./src/widget/*"],
+      "@feature/*": ["./src/feature/*"],
+      "@entity/*": ["./src/entity/*"],
+      "@share/*": ["./src/share/*"]
     }
   },
   "include": ["src", ".storybook"]
