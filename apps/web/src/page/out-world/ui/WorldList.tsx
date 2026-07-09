@@ -38,7 +38,6 @@ export default function WorldList() {
       <CardUL>
         {worldList.map((world) => (
           <WorldCard
-            key={world.id}
             id={world.id}
             title={world.title}
             description={world.description}

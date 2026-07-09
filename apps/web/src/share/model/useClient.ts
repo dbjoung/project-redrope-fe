@@ -2,13 +2,14 @@ import { CustomError } from "../lib/CustomError";
 import { useAuthStore } from "../model/useAuthStore";
 
 const API_URL = import.meta.env.VITE_API_URL || "";
-const POSTMAN_API_KEY = import.meta.env.POSTMAN_API_KEY || "";
+const POSTMAN_API_KEY = import.meta.env.VITE_POSTMAN_API_KEY || "";
 
 export type ClientType<T> = {
   request: (from: string, url: string, options?: RequestInit) => Promise<T>;
 };
 
 export const useClient = <T>(): ClientType<T> => {
+  console.log(API_URL, POSTMAN_API_KEY);
   const getTokens = useAuthStore((state) => state.action.getTokens);
   return {
     request: async (from: string, url: string, options?: RequestInit) => {

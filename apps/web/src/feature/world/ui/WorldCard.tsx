@@ -11,7 +11,7 @@ type WorldCardProps = {
 
 export default function WorldCard({ id, title, imageUrl, writer, description }: WorldCardProps) {
   return (
-    <NavLink to={`/worlds/${id}`} className="block w-full">
+    <NavLink to={`/worlds/${id}`} className="block w-full" key={id}>
       <section className="rd-box-shadow rounded-rd-16 bg-rd-white relative flex w-full flex-col overflow-hidden border-white">
         <section className="h-42.5">
           <img src={imageUrl} alt={title} className="h-full w-full object-cover" />
