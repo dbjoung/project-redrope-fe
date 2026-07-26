@@ -27,7 +27,8 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
 
       REDIS_HOST: redis
-      REDIS_PORT: "6379"
+      REDIS_PORT: ${REDIS_PORT}
+      JWT_REFRESH_TTL_SECONDS: ${JWT_REFRESH_TTL_SECONDS}
 
       TZ: Asia/Seoul
 
