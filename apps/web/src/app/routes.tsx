@@ -8,6 +8,8 @@ import Login from "@/page/auth/Login";
 import InWorld from "@/page/in-world/ui/InWorld";
 import InWorldLayout from "./layouts/InWorldLayout";
 import EntityDetail from "@/page/in-world/ui/EntityDetail";
+import Join from "@/page/auth/Join";
+import FindPassword from "@/page/auth/FindPassword";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,14 @@ const router = createBrowserRouter([
           {
             path: "/login",
             element: <Login />,
+          },
+          {
+            path: "/join",
+            element: <Join />,
+          },
+          {
+            path: "/find-password",
+            element: <FindPassword />,
           },
         ],
       },
