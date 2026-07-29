@@ -13,6 +13,7 @@
     "build": "npm run build --workspaces --if-present",
     "build:web": "npm run build -w @redrope/web",
     "build:api": "npm run build -w @redrope/api",
+    "build:shared": "npm run build -w @redrope/shared",
     "start": "npm run start -w @redrope/api",
     "lint": "npm run lint --workspaces --if-present",
     "lint:web": "npm run lint -w @redrope/web",

@@ -9,8 +9,12 @@ export type signInType = {
   password: string;
 };
 
-export type ResponseUserType = {
+export type UserType = {
   id: string;
   nickname: string;
   email: string;
 };
+
+export type ResponseUserType = {
+  accessToken: string;
+} & UserType;
