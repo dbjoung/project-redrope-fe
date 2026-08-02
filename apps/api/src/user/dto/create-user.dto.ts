@@ -1,16 +1,16 @@
 import { IsNotEmpty, IsString, Length } from "class-validator";
-
-export class CreateUserDto {
+import { signInType } from "@redrope/shared/dist/user";
+export class CreateUserDto implements signInType {
   @IsNotEmpty()
   @IsString()
-  nickname: string = "";
+  nickname!: string;
 
   @IsNotEmpty()
   @IsString()
-  email: string = "";
+  email!: string;
 
   @IsNotEmpty()
   @IsString()
   @Length(10)
-  password: string = "";
+  password!: string;
 }

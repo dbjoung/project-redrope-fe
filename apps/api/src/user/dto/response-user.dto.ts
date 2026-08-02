@@ -1,7 +1,8 @@
 import ResponseMessage from "@src/common/dto/response-message.dto";
 import { User } from "../entities/user.entity";
+import { UserType } from "@redrope/shared";
 
-export class ResponseUser extends ResponseMessage {
+export class ResponseUser extends ResponseMessage implements UserType {
   id: string;
   nickname: string;
   email: string;
