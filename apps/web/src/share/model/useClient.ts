@@ -1,35 +1,39 @@
+import type { ApiResponse } from "@redrope/shared";
 import { CustomError } from "../lib/CustomError";
 import { useAuthStore } from "../model/useAuthStore";
 
 const API_URL = import.meta.env.VITE_API_URL || "";
-const POSTMAN_API_KEY = import.meta.env.VITE_POSTMAN_API_KEY || "";
 
 export type ClientType<T> = {
   request: (from: string, url: string, options?: RequestInit) => Promise<T>;
 };
 
-export const useClient = <T>(): ClientType<T> => {
-  console.log(API_URL, POSTMAN_API_KEY);
-  const getTokens = useAuthStore((state) => state.action.getTokens);
+export const useClient = <T>(): ClientType<ApiResponse<T>> => {
+  const getTokens = useAuthStore((state) => state.action.getToken);
   return {
     request: async (from: string, url: string, options?: RequestInit) => {
       const initOptions = options ?? {};
-      const res = await fetch(`${API_URL}${url}`, {
-        ...initOptions,
-        headers: {
-          "Content-Type": "application/json",
-          "x-api-key": getTokens().accessToken ?? POSTMAN_API_KEY,
-          ...initOptions.headers,
-        },
-        body: initOptions.body,
-      });
+      try {
+        const res = await fetch(`${API_URL}${url}`, {
+          method: "GET",
+          ...initOptions,
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getTokens().accessToken ?? ""}`,
+            ...initOptions.headers,
+          },
+          credentials: "include",
+        });
 
-      if (!res.ok) throw new CustomError(from, res);
+        const toJson = await res.json();
+        if (!res.ok) throw new CustomError(from, toJson.message);
 
-      const toJson = await res.json();
+        return toJson;
+      } catch (e) {
+        if (e instanceof CustomError) throw e;
 
-      if (toJson) return toJson;
-      else throw new CustomError(from, "JSON 변환이 잘못됐습니다.");
+        throw new CustomError(from, "API 통신 중 오류가 발생했습니다.");
+      }
     },
   };
 };

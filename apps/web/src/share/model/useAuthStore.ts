@@ -1,26 +1,31 @@
+import type { UserType } from "@redrope/shared";
 import { create } from "zustand/react";
 
 type AuthStore = {
   accessToken: string | null;
-  refreshToken: string | null;
+  user: UserType | null;
+
   action: {
-    setTokens: (accessToken: string, refreshToken?: string) => void;
-    getTokens: () => { accessToken: string | null; refreshToken: string | null };
-    clearAccessToken: () => void;
+    setToken: (accessToken: string) => void;
+    setUser: (user: UserType) => void;
+    getToken: () => { accessToken: string | null };
+    getUser: () => UserType | null;
+    clearAuth: () => void;
   };
 };
 
 export const useAuthStore = create<AuthStore>((set, get) => {
   return {
     accessToken: null,
-    refreshToken: null,
+    user: null,
     action: {
-      setTokens: (accessToken: string, refreshToken?: string) => {
-        if (refreshToken) set({ accessToken, refreshToken });
-        else set({ accessToken });
+      setToken: (accessToken: string) => {
+        set({ accessToken });
       },
-      getTokens: () => ({ accessToken: get().accessToken, refreshToken: get().refreshToken }),
-      clearAccessToken: () => set({ accessToken: null, refreshToken: null }),
+      setUser: (user: UserType) => set({ user }),
+      getToken: () => ({ accessToken: get().accessToken }),
+      getUser: () => get().user,
+      clearAuth: () => set({ accessToken: null, user: null }),
     },
   };
 });
