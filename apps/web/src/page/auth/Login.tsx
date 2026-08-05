@@ -1,4 +1,4 @@
-import LoginBox from "@feature/login/ui/LoginBox.tsx";
+import LoginBox from "@/widget/auth/login/ui/LoginBox";
 
 export default function Login() {
   return (
