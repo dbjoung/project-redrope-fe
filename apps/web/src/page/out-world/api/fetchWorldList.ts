@@ -1,4 +1,6 @@
-import { unWarp, type ApiRequest } from "@/share/lib/unWrap";
+import { unWarp } from "@/share/lib/unWrap";
+import type { ApiResponse } from "@redrope/shared";
+
 import type { ClientType } from "@/share/model/useClient";
 
 export type WorldCardType = {
@@ -10,7 +12,7 @@ export type WorldCardType = {
 };
 
 export async function fetchWorldList(
-  client: ClientType<ApiRequest<WorldCardType[]>>,
+  client: ClientType<ApiResponse<WorldCardType[]>>,
 ): Promise<WorldCardType[]> {
   const res = await client.request("fetchWorldList", `/api/v1/worlds`);
 

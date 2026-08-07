@@ -2,7 +2,8 @@ import ButtonBig from "@share/ui/ButtonBig.tsx";
 
 import { NavLink } from "react-router";
 import cn from "@/share/lib/cn";
-import { useEffect, type ReactElement } from "react";
+import { type ReactElement } from "react";
+import { useAuth } from "@/share/model/useAuth";
 
 export default function SideMenu({
   topSection,
@@ -15,7 +16,7 @@ export default function SideMenu({
   secondSectionGroup?: ReactElement;
   className?: string;
 }) {
-  useEffect(() => {});
+  const { logoutMutate: lm } = useAuth();
 
   return (
     <section className={cn("rd-border-r flex h-full flex-col justify-between", className)}>
@@ -37,7 +38,7 @@ export default function SideMenu({
           text={"로그아웃"}
           size="small"
           direction="left"
-          elementProps={{ to: "/#", className: "w-full" }}
+          elementProps={{ to: "/login", className: "w-full", onClick: () => lm.logout() }}
         />
       </section>
     </section>

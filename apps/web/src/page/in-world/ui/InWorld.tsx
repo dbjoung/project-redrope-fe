@@ -2,17 +2,17 @@ import EntityCard from "@/feature/world/ui/EntityCard";
 import { fetchCategoryInfo, type CategoryInfoType } from "@/page/out-world/api/fetchCategoryInfo";
 import { USABLE_ICON, type UsableIconKey } from "@/share/constants/const";
 import { CustomError } from "@/share/lib/CustomError";
-import type { ApiRequest } from "@/share/lib/unWrap";
 import { useClient } from "@/share/model/useClient";
 import ButtonBig from "@/share/ui/ButtonBig";
 import PageTitle from "@/widget/layout/ui/PageTitle";
 import CardUL from "@/share/ui/CardUL";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router";
+import type { ApiResponse } from "@redrope/shared";
 
 export default function InWorld() {
   const { worldId, categoryId } = useParams();
-  const client = useClient<ApiRequest<CategoryInfoType>>();
+  const client = useClient<ApiResponse<CategoryInfoType>>();
 
   const { data: categoryInfo, isPending } = useQuery({
     queryKey: [client, worldId, categoryId],

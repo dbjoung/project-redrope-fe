@@ -2,13 +2,13 @@ import PageTitle from "@widget/layout/ui/PageTitle.tsx";
 import ButtonBig from "@/share/ui/ButtonBig";
 import WorldCard from "@feature/world/ui/WorldCard";
 import { useQuery } from "@tanstack/react-query";
-import { type ApiRequest } from "@/share/lib/unWrap";
 import { fetchWorldList, type WorldCardType } from "../api/fetchWorldList";
 import { useClient } from "@/share/model/useClient";
 import CardUL from "@/share/ui/CardUL";
+import type { ApiResponse } from "@redrope/shared";
 
 export default function WorldList() {
-  const client = useClient<ApiRequest<WorldCardType[]>>();
+  const client = useClient<ApiResponse<WorldCardType[]>>();
   const { data: worldList, isPending } = useQuery({
     queryKey: [client],
     queryFn: async () => fetchWorldList(client),

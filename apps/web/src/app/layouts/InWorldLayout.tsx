@@ -9,9 +9,9 @@ import ButtonBig from "@/share/ui/ButtonBig";
 import { useQuery } from "@tanstack/react-query";
 import { fetchWorldInfo } from "@/page/out-world/api/fetchWorldInfo";
 import { useClient } from "@/share/model/useClient";
-import type { ApiRequest } from "@/share/lib/unWrap";
 import type { WorldInfoType } from "@/share/model/useWorldInfoStore";
 import { USABLE_ICON, type UsableIconKey } from "@/share/constants/const";
+import type { ApiResponse } from "@redrope/shared";
 
 type WorldMenuType = {
   iconName: IconName;
@@ -25,7 +25,7 @@ const IN_WORLD_MENU: WorldMenuType[] = [
 ];
 
 export default function InWorldLayout() {
-  const client = useClient<ApiRequest<WorldInfoType>>();
+  const client = useClient<ApiResponse<WorldInfoType>>();
   const { worldId } = useParams();
   const [sidebarOpen, setSidebarOpen] = useState(() => {
     if (typeof window === "undefined") return true;
