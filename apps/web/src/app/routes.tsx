@@ -1,6 +1,6 @@
-import { createBrowserRouter, RouterProvider } from "react-router";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router";
 import AuthLayout from "@/app/layouts/AuthLayout.tsx";
-import LootLayout from "@/app/layouts/LootLayout.tsx";
+import RootLayout from "@/app/layouts/RootLayout";
 import OutWorldLayout from "@/app/layouts/OutWorldLayout";
 import { RouteErrorBoundary } from "@/share/lib/RouteErrorBoundary";
 import WorldList from "@/page/out-world/ui/WorldList";
@@ -13,31 +13,35 @@ import FindPassword from "@/page/auth/FindPassword";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <LootLayout />,
+    element: <AuthLayout />,
     errorElement: <RouteErrorBoundary />,
     children: [
       {
-        path: "/",
-        element: <AuthLayout />,
-        children: [
-          {
-            path: "/login",
-            element: <Login />,
-          },
-          {
-            path: "/join",
-            element: <Join />,
-          },
-          {
-            path: "/find-password",
-            element: <FindPassword />,
-          },
-        ],
+        path: "/login",
+        element: <Login />,
       },
       {
-        path: "/",
+        path: "/join",
+        element: <Join />,
+      },
+      {
+        path: "/find-password",
+        element: <FindPassword />,
+      },
+    ],
+  },
+  {
+    path: "/",
+    element: <RootLayout />,
+    errorElement: <RouteErrorBoundary />,
+    children: [
+      {
+        index: true,
+        element: <Navigate to="/worlds" replace />,
+      },
+      {
         element: <OutWorldLayout />,
+        errorElement: <RouteErrorBoundary />,
         children: [
           {
             path: "/worlds",
@@ -48,14 +52,17 @@ const router = createBrowserRouter([
       {
         path: "/worlds/:worldId",
         element: <InWorldLayout />,
+        errorElement: <RouteErrorBoundary />,
         children: [
           {
             path: "/worlds/:worldId/:categoryId",
             element: <InWorld />,
-          },
-          {
-            path: "/worlds/:worldId/:categoryId/:entityId",
-            element: <EntityDetail />,
+            children: [
+              {
+                path: "/worlds/:worldId/:categoryId/:entityId",
+                element: <EntityDetail />,
+              },
+            ],
           },
         ],
       },
