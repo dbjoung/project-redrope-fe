@@ -1,7 +1,8 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { DeletableEntity } from "@src/common/entity/deleteable.entity";
+import { UserWorld } from "@src/world/entity/user_world.entity";
 
-@Entity("users")
+@Entity()
 export class User extends DeletableEntity {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
@@ -14,4 +15,9 @@ export class User extends DeletableEntity {
 
   @Column()
   password!: string;
+
+  @OneToMany(() => UserWorld, (uw) => uw.user, {
+    onDelete: "CASCADE",
+  })
+  userWorlds!: UserWorld[];
 }
