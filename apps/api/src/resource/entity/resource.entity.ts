@@ -1,6 +1,7 @@
 import { DeletableEntity } from "@src/common/entity/deleteable.entity";
-import { Column, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
+@Entity()
 export class Resource extends DeletableEntity {
   @PrimaryGeneratedColumn()
   id!: number;
