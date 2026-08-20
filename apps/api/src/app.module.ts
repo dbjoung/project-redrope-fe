@@ -7,6 +7,13 @@ import { AppService } from "./app.service";
 import { UserModule } from "./user/user.module";
 import { AuthModule } from "./auth/auth.module";
 import { RedisModule } from "./redis/redis.module";
+import { BoxModule } from "./box/box.module";
+import { CategoryModule } from "./category/category.module";
+import { NodeModule } from "./node/node.module";
+import { RopeModule } from "./rope/rope.module";
+import { ResourceModule } from "./resource/resource.module";
+import { TemplateModule } from "./template/template.module";
+import { WorldModule } from "./world/world.module";
 
 @Module({
   imports: [
@@ -42,6 +49,13 @@ import { RedisModule } from "./redis/redis.module";
     UserModule,
     AuthModule,
     RedisModule,
+    ResourceModule,
+    BoxModule,
+    CategoryModule,
+    NodeModule,
+    RopeModule,
+    TemplateModule,
+    WorldModule,
   ],
   controllers: [AppController],
   providers: [AppService],

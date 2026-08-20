@@ -1,7 +1,8 @@
 import { BoxRope } from "@src/box/entity/box_rope.entity";
 import { BaseEntity } from "@src/common/entity/base.entity";
-import { Column, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
+@Entity()
 export class Rope extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: string;

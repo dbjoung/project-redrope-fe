@@ -1,7 +1,9 @@
 import { DeletableEntity } from "@src/common/entity/deleteable.entity";
+import { Node } from "@src/node/entity/node.entity";
 import { World } from "@src/world/entity/world.entity";
-import { Column, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
+@Entity()
 export class Category extends DeletableEntity {
   @PrimaryGeneratedColumn()
   id!: number;

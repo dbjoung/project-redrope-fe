@@ -2,8 +2,9 @@ import { BoxNormal } from "@src/box/entity/box_normal.entity";
 import { BoxRope } from "@src/box/entity/box_rope.entity";
 import { Category } from "@src/category/entity/category.entity";
 import { DeletableEntity } from "@src/common/entity/deleteable.entity";
-import { Column, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
+@Entity()
 export class Node extends DeletableEntity {
   @PrimaryGeneratedColumn()
   id!: number;
