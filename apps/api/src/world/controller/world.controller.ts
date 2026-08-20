@@ -2,8 +2,10 @@ import { Body, Controller, Get, Post, Req } from "@nestjs/common";
 import { AuthRequest } from "@src/common/type/auth.type";
 import { WorldService } from "../service/world.service";
 import { WorldCreateDto } from "../dto/world-create.dto";
+import { ApiTags } from "@nestjs/swagger";
 
-@Controller("world")
+@Controller("World API")
+@ApiTags("World API")
 export class WorldController {
   constructor(private readonly worldService: WorldService) {}
 

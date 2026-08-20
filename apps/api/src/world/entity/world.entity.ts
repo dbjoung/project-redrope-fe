@@ -11,7 +11,7 @@ export class World extends DeletableEntity {
   @Column()
   title!: string;
 
-  @Column()
+  @Column({ type: "text", nullable: true })
   description!: string | null;
 
   @OneToMany(() => Category, (cate) => cate.parentWorld, {
