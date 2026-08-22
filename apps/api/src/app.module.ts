@@ -42,6 +42,7 @@ import { WorldModule } from "./world/world.module";
           database,
           autoLoadEntities: true,
           synchronize: true,
+          dropSchema: false,
         };
       },
     }),
