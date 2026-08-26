@@ -8,4 +8,8 @@ export class WorldCreateDto {
   @IsNotEmpty()
   @IsString()
   description!: string;
+
+  @IsNotEmpty()
+  @IsString()
+  slug!: string;
 }
