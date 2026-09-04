@@ -2,13 +2,14 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { World } from "../entity/world.entity";
 import { DataSource, Repository } from "typeorm";
 import { UserWorld } from "@src/world/entity/user_world.entity";
-import { WorldSummaryWithRole } from "../dto/world.dto";
 import { WorldCreateDto } from "../dto/world-create.dto";
 import { WorldRole } from "../common/world.role";
+import { WorldSummaryType } from "@redrope/shared/dist/world";
 import {
   WorldDeleteForbiddenException,
   WorldJoinConflictException,
   WorldNotFoundException,
+  WorldSlugConflictException,
 } from "../common/world.exception";
 
 export class WorldService {
@@ -21,10 +22,17 @@ export class WorldService {
   async findAll(userId: string) {
     return await this.worldRepository
       .createQueryBuilder("world")
-      .select(["world.id", "world.title", "world.description, userWorld.role"])
+      .select([
+        "world.id as id",
+        "world.title as title",
+        "world.description as description",
+        "world.slug as slug",
+        "world.representImg as representImg",
+        "userWorld.role as role",
+      ])
       .innerJoin(UserWorld, "userWorld", "userWorld.worldId = world.id")
       .where("userWorld.userId = :userId", { userId })
-      .getRawMany<WorldSummaryWithRole>();
+      .getRawMany<WorldSummaryType>();
   }
 
   async createWorld(userId: string, dto: WorldCreateDto) {
@@ -37,9 +45,16 @@ export class WorldService {
       const newWorld = manager.create(World, {
         title: dto.title,
         description: dto.description,
+        slug: dto.slug,
       });
 
-      const world = await manager.save(newWorld);
+      let world: World;
+      try {
+        world = await manager.save(newWorld);
+      } catch (_e) {
+        throw WorldSlugConflictException();
+      }
+
       const newUserWorld = manager.create(UserWorld, {
         user: { id: userId },
         world,
@@ -57,7 +72,7 @@ export class WorldService {
     }
   }
 
-  async joinWorld(userId: string, dto: { worldId: number }) {
+  async joinWorld(userId: string, dto: { worldId: string }) {
     const queryRunner = this.dataSource.createQueryRunner();
     await queryRunner.connect();
     await queryRunner.startTransaction();
@@ -90,7 +105,7 @@ export class WorldService {
     }
   }
 
-  async softDeleteWorld(userId: string, dto: { worldId: number }) {
+  async softDeleteWorld(userId: string, dto: { worldId: string }) {
     const queryRunner = this.dataSource.createQueryRunner();
     await queryRunner.connect();
     await queryRunner.startTransaction();
