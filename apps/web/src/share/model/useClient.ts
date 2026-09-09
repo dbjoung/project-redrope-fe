@@ -4,14 +4,18 @@ import { useAuthStore } from "../model/useAuthStore";
 
 const API_URL = import.meta.env.VITE_API_URL || "";
 
-export type ClientType<T> = {
-  request: (from: string, url: string, options?: RequestInit) => Promise<T>;
+export type ClientType = {
+  request: <K>(from: string, url: string, options?: RequestInit) => Promise<ApiResponse<K>>;
 };
 
-export const useClient = <T>(): ClientType<ApiResponse<T>> => {
+export const useClient = (): ClientType => {
   const getTokens = useAuthStore((state) => state.action.getToken);
   return {
-    request: async (from: string, url: string, options?: RequestInit) => {
+    request: async <K>(
+      from: string,
+      url: string,
+      options?: RequestInit,
+    ): Promise<ApiResponse<K>> => {
       const initOptions = options ?? {};
       try {
         const res = await fetch(`${API_URL}${url}`, {
