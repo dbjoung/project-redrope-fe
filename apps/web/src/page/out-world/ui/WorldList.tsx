@@ -2,13 +2,13 @@ import PageTitle from "@widget/layout/ui/PageTitle.tsx";
 import ButtonBig from "@/share/ui/ButtonBig";
 import WorldCard from "@feature/world/ui/WorldCard";
 import { useQuery } from "@tanstack/react-query";
-import { fetchWorldList, type WorldCardType } from "../api/fetchWorldList";
+import { fetchWorldList } from "../api/fetchWorldList";
 import { useClient } from "@/share/model/useClient";
 import CardUL from "@/share/ui/CardUL";
-import type { ApiResponse } from "@redrope/shared";
+import type { WorldSummaryType } from "@redrope/shared/dist/world";
 
 export default function WorldList() {
-  const client = useClient<ApiResponse<WorldCardType[]>>();
+  const client = useClient<WorldSummaryType[]>();
   const { data: worldList, isPending } = useQuery({
     queryKey: [client],
     queryFn: async () => fetchWorldList(client),
@@ -41,8 +41,7 @@ export default function WorldList() {
             id={world.id}
             title={world.title}
             description={world.description}
-            imageUrl={world.imageUrl}
-            writer={world.writer}
+            imageUrl={world.representImg}
           />
         ))}
       </CardUL>
