@@ -8,12 +8,12 @@ export type LabelBoxProps = {
   required?: boolean;
   iconInfo?: FixedIconProps;
   children?: ReactNode;
-  labelProps: ComponentProps<"label">;
+  labelProps?: ComponentProps<"label">;
 };
 
 const textVariants = {
   regular: "text-rd-fs-hard",
-  medium: "text-rd-fs-title-sub",
+  medium: "text-rd-fs-title-sub font-medium",
   bold: "text-rd-fs-title-sub font-bold",
 };
 
