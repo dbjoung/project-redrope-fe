@@ -10,6 +10,8 @@ import InWorldLayout from "./layouts/InWorldLayout";
 import EntityDetail from "@/page/in-world/ui/EntityDetail";
 import Join from "@/page/auth/Join";
 import FindPassword from "@/page/auth/FindPassword";
+import InvitedWorldListPage from "@/page/out-world/ui/InvitedWorldList";
+import MySettingPage from "@/page/out-world/ui/MySetting";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +48,14 @@ const router = createBrowserRouter([
           {
             path: "/worlds",
             element: <WorldList />,
+          },
+          {
+            path: "/invited",
+            element: <InvitedWorldListPage />,
+          },
+          {
+            path: "/setting",
+            element: <MySettingPage />,
           },
         ],
       },
