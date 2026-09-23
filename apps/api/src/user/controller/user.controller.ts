@@ -1,10 +1,13 @@
-import { Controller, Get, Body, Patch, Param, Delete } from "@nestjs/common";
+import { Controller, Get, Body, Patch, Param, Delete, Req } from "@nestjs/common";
 import { UserService } from "../service/user.service";
 import { UpdateUserDto } from "../dto/update-user.dto";
 import { ResponseUser } from "../dto/response-user.dto";
 import ResponseMessage from "@src/common/dto/response-message.dto";
+import { ApiTags } from "@nestjs/swagger";
+import { AuthRequest } from "@src/common/type/auth.type";
 
 @Controller("user")
+@ApiTags("User API")
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
@@ -15,9 +18,11 @@ export class UserController {
   }
 
   @Get(":id")
-  async findOne(@Param("id") id: string) {
+  async getMySetting(@Req() req: AuthRequest) {
+    const userId = req.user.userId;
+
     const findedUser = await this.userService.findOne({
-      id,
+      id: userId,
     });
     if (findedUser) return ResponseUser.from(findedUser);
     else return null;

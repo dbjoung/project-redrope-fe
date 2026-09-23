@@ -1,7 +1,6 @@
 import { BaseEntity } from "@src/common/entity/base.entity";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity()
 export abstract class Box extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: number;

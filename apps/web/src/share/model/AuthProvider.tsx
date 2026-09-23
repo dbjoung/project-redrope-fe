@@ -19,12 +19,12 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
     })),
   );
 
-  const { request } = useClient<ResponseUserType>();
+  const { request } = useClient();
 
   const { isPending, isError } = useQuery({
     queryKey: ["authRefresh"],
     queryFn: async () => {
-      const res = await request("AuthProvider", "/api/v1/auth/refresh");
+      const res = await request<ResponseUserType>("AuthProvider", "/api/v1/auth/refresh");
       const { accessToken, ...user } = unWarp(res);
       setToken(accessToken);
       setUser(user);

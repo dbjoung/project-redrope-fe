@@ -1,3 +1,5 @@
+export const DEFAULT_IMG = "/defaultImg.jpg";
+
 export const USABLE_ICON = {
   0: "user-star",
   1: "map",

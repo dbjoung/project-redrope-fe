@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsString } from "class-validator";
 
-export class WorldCreateDto {
+export class WorldUpdateDto {
   @IsNotEmpty()
   @IsString()
   title!: string;

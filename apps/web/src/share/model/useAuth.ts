@@ -1,6 +1,6 @@
 import { useAuthStore } from "@/share/model/useAuthStore";
 import { useClient } from "@/share/model/useClient";
-import type { ResponseUserType } from "@redrope/shared";
+import type { ResponseUserType, UserType } from "@redrope/shared";
 import { useMutation } from "@tanstack/react-query";
 import { useCallback } from "react";
 import { useNavigate } from "react-router";
@@ -8,7 +8,7 @@ import { useShallow } from "zustand/react/shallow";
 import { CustomError } from "../lib/CustomError";
 
 export function useAuth() {
-  const { request } = useClient<ResponseUserType>();
+  const { request } = useClient();
   const { user, action } = useAuthStore(
     useShallow((state) => ({
       accessToken: state.accessToken,
@@ -25,7 +25,7 @@ export function useAuth() {
     isError: in_isError,
   } = useMutation({
     mutationFn: async ({ email, password }: { email: string; password: string }) => {
-      await request("Login", "/api/v1/auth/login", {
+      await request<ResponseUserType>("Login", "/api/v1/auth/login", {
         method: "POST",
         body: JSON.stringify({
           email,
@@ -64,6 +64,8 @@ export function useAuth() {
 
   const getUser = useCallback(() => user, [user]);
 
+  const setUser = useCallback((user: UserType) => action.setUser(user), [action]);
+
   const loginMutate = {
     login: in_mutate,
     isPending: in_isPending,
@@ -76,5 +78,5 @@ export function useAuth() {
     isError: out_isError,
   };
 
-  return { user, getUser, loginMutate, logoutMutate };
+  return { user, getUser, setUser, loginMutate, logoutMutate };
 }

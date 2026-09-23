@@ -1,8 +1,9 @@
 import { BaseEntity } from "@src/common/entity/base.entity";
-import { Column, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Template } from "./template.entity";
 import { TemplateType } from "../common/template.type";
 
+@Entity()
 export class TemplateBox extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: number;

@@ -1,7 +1,11 @@
 import { CustomException } from "@src/common/exception/CustomException";
 
 export const WorldNotFoundException = () => {
-  return new CustomException(409, "W001", "해당 id의 world가 없습니다.");
+  return new CustomException(404, "W001", "해당 id의 world가 없습니다.");
+};
+
+export const WorldSlugConflictException = () => {
+  return new CustomException(409, "W002", "이미 존재하는 Slug입니다.");
 };
 
 export const WorldJoinConflictException = () => {

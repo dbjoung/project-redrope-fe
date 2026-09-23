@@ -4,7 +4,12 @@ import { extendTailwindMerge } from "tailwind-merge";
 const twMerge = extendTailwindMerge({
   extend: {
     classGroups: {
-      "font-size": [{ text: [(v: string) => v.startsWith("rd-fs-")] }],
+      "font-size": [
+        {
+          text: [(v: string) => v.startsWith("rd-fs-")],
+        },
+      ],
+      p: [{ p: [(v: string) => v.startsWith("rd-")] }],
     },
   },
 });
